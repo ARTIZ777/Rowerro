@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rowerro - Najlepsze Rowery w Polsce</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <a href="#" class="logo">
+    <img src="images/logo/logo.png" alt="Nazwa Twojej Firmy">
+</a>
+
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home">Strona Główna</a></li>
+                <li><a href="#categories">Kategorie</a></li>
+                <li><a href="#products">Polecane Modele</a></li>
+                <li><a href="#about">O Nas</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+                <li><a href="#" class="cart-link" onclick="showCart()">🛒<span class="cart-counter" id="cartCounter" style="display: none;">0</span></a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Odkryj Nową Kolekcję</h1>
+            <p>Znajdź idealny rower dla siebie w naszej ekskluzywnej kolekcji. Od górskich po miejskie - mamy wszystko czego potrzebujesz.</p>
+            <a href="#products" class="cta-button">Sprawdź</a>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories" id="categories">
+        <div class="container">
+            <h2 class="section-title">Wybierz Swoją Kategorię</h2>
+            <div class="categories-grid">
+                <div class="category-card" onclick="showCategory('mountain')">
+                    <div class="category-image"></div>
+                    <div class="category-content">
+                        <h3>Rowery Górskie</h3>
+                        <p>Dla miłośników przygód terenowych i ekstremalnych wyzwań</p>
+                    </div>
+                </div>
+                <div class="category-card" onclick="showCategory('road')">
+                    <div class="category-image"></div>
+                    <div class="category-content">
+                        <h3>Rowery Szosowe</h3>
+                        <p>Szybkość i wydajność na asfaltowych trasach</p>
+                    </div>
+                </div>
+                <div class="category-card" onclick="showCategory('city')">
+                    <div class="category-image"></div>
+                    <div class="category-content">
+                        <h3>Rowery Miejskie</h3>
+                        <p>Komfort i styl do codziennych podróży po mieście</p>
+                    </div>
+                </div>
+                <div class="category-card" onclick="showCategory('electric')">
+                    <div class="category-image"></div>
+                    <div class="category-content">
+                        <h3>Rowery Elektryczne</h3>
+                        <p>Nowoczesna technologia wspierająca Twoją jazdę</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="container">
+            <h2 class="section-title">Polecane Modele</h2>
+            <div class="products-grid" id="productsGrid">
+                <div class="product-card" onclick="showProduct('mountain-x1')">
+                    <div class="product-image">
+                        <div class="product-badge">Nowość</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-text">
+                            <h3>Mountain Pro X1</h3>
+                            <p>Zaawansowany rower górski z pełną amortyzacją</p>
+                        </div>
+                        <div class="product-price">
+                            <span class="price">2 999 zł</span>
+                            <button class="add-to-cart" onclick="event.stopPropagation(); addToCart('mountain-x1')">Dodaj</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card" onclick="showProduct('city-cruiser')">
+                    <div class="product-image">
+                        <div class="product-badge">Bestseller</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-text">
+                            <h3>City Cruiser S2</h3>
+                            <p>Elegancki rower miejski z koszykiem</p>
+                        </div>
+                        <div class="product-price">
+                            <span class="price">1 799 zł</span>
+                            <button class="add-to-cart" onclick="event.stopPropagation(); addToCart('city-cruiser')">Dodaj</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card" onclick="showProduct('road-master')">
+                    <div class="product-image">
+                        <div class="product-badge">-15%</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-text">
+                            <h3>Road Master R3</h3>
+                            <p>Lekki rower szosowy do sportowej jazdy</p>
+                        </div>
+                        <div class="product-price">
+                            <span class="price">3 499 zł</span>
+                            <button class="add-to-cart" onclick="event.stopPropagation(); addToCart('road-master')">Dodaj</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card" onclick="showProduct('e-rider')">
+                    <div class="product-image">
+                        <div class="product-badge">Eco</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-text">
+                            <h3>E-Rider Plus</h3>
+                            <p>Elektryczny rower z zasięgiem do 80km</p>
+                        </div>
+                        <div class="product-price">
+                            <span class="price">4 299 zł</span>
+                            <button class="add-to-cart" onclick="event.stopPropagation(); addToCart('e-rider')">Dodaj</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card" onclick="showProduct('hybrid-sport')">
+                    <div class="product-image">
+                        <div class="product-badge">Hit</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-text">
+                            <h3>Hybrid Sport H1</h3>
+                            <p>Uniwersalny rower hybrydowy</p>
+                        </div>
+                        <div class="product-price">
+                            <span class="price">2 299 zł</span>
+                            <button class="add-to-cart" onclick="event.stopPropagation(); addToCart('hybrid-sport')">Dodaj</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card" onclick="showProduct('kids-fun')">
+                    <div class="product-image">
+                        <div class="product-badge">Dla Dzieci</div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-text">
+                            <h3>Kids Fun K1</h3>
+                            <p>Bezpieczny rower dla dzieci</p>
+                        </div>
+                        <div class="product-price">
+                            <span class="price">899 zł</span>
+                            <button class="add-to-cart" onclick="event.stopPropagation(); addToCart('kids-fun')">Dodaj</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a href="#" class="view-all-btn" onclick="showAllProducts()">Zobacz Wszystkie Modele</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">O Nas</h2>
+            <div class="about-hero">
+                <div class="about-text">
+                    <h3>Pasja Do Rowerów Od 1995</h3>
+                    <p>Rowerro to rodzinna firma z tradycjami, która od prawie 30 lat dostarcza najlepsze rowery dla polskich klientów. Zaczęliśmy jako mały sklep w centrum Warszawy, a dziś jesteśmy jedną z wiodących marek rowerowych w Polsce.</p>
+                    <p>Nasza misja jest prosta: chcemy, żeby każdy znalazł swój idealny rower. Dlatego oferujemy szeroki wybór modeli - od rowerów dla dzieci, przez miejskie cruisery, aż po profesjonalne rowery górskie i szosowe.</p>
+                </div>
+                <div class="about-image">
+                    <div class="about-placeholder">
+                        <div class="about-icon">🏪</div>
+                        <p>Nasz sklep w Warszawie</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stats-section">
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">15,000+</div>
+                        <div class="stat-label">Zadowolonych Klientów</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Modeli w Ofercie</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">25+</div>
+                        <div class="stat-label">Marek Premium</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">29</div>
+                        <div class="stat-label">Lat Doświadczenia</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="features-section">
+                <h3>Dlaczego Wybierają Nas Klienci</h3>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🚴‍♂️</div>
+                        <h4>Ekspercka Wiedza</h4>
+                        <p>Nasz zespół to pasjonaci rowerów z wieloletnim doświadczeniem, którzy pomogą Ci wybrać idealny model.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔧</div>
+                        <h4>Serwis Premium</h4>
+                        <p>Oferujemy kompleksowy serwis i konserwację. Twój rower będzie zawsze w doskonałym stanie.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💯</div>
+                        <h4>Gwarancja Jakości</h4>
+                        <p>30 dni na zwrot bez podania przyczyny i pełna gwarancja producenta na wszystkie modele.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Skontaktuj Się Z Nami</h2>
+            <div class="contact-wrapper">
+                <div class="contact-info-section">
+                    <h3>Informacje Kontaktowe</h3>
+                    <div class="contact-grid">
+                        <div class="contact-item">
+                            <div class="contact-icon">📍</div>
+                            <div class="contact-details">
+                                <h4>Adres Sklepu</h4>
+                                <p>ul. Płochocińska 199<br>03-044 Warszawa<br>Polska</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">📞</div>
+                            <div class="contact-details">
+                                <h4>Telefon</h4>
+                                <p>+48 123 456 789<br>Pon-Pt: 9:00-18:00<br>Sob: 10:00-16:00</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">📧</div>
+                            <div class="contact-details">
+                                <h4>Email</h4>
+                                <p>info@rowerro.pl<br>serwis@rowerro.pl<br>sprzedaz@rowerro.pl</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">💬</div>
+                            <div class="contact-details">
+                                <h4>Social Media</h4>
+                                <p>Facebook: /RowerroPoland<br>Instagram: @rowerro_official<br>YouTube: RowerroTV</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form-section">
+                    <div class="contact-form">
+                        <h3>Napisz Do Nas</h3>
+                        <form id="contactForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <input type="text" id="name" name="name" placeholder="Twoje Imię" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" id="email" name="email" placeholder="Twój Email" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <input type="tel" id="phone" name="phone" placeholder="Numer Telefonu">
+                                </div>
+                                <div class="form-group">
+                                    <select id="subject" name="subject" required>
+                                        <option value="">Wybierz Temat</option>
+                                        <option value="general">Pytanie Ogólne</option>
+                                        <option value="product">Pytanie o Produkt</option>
+                                        <option value="service">Serwis</option>
+                                        <option value="complaint">Reklamacja</option>
+                                        <option value="partnership">Współpraca</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <textarea id="message" name="message" rows="5" placeholder="Twoja Wiadomość" required></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="privacy" name="privacy" required>
+                                    <span class="checkmark"></span>
+                                    Wyrażam zgodę na przetwarzanie danych osobowych zgodnie z RODO
+                                </label>
+                            </div>
+                            <button type="submit" class="submit-btn">Wyślij Wiadomość</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="map-section">
+                <h3>Znajdź Nas</h3>
+                <div class="map-container">
+    <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2441.234!2d20.9687!3d52.2845!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x471ecc!2sPłochocińska+199%2C+Warszawa!5e0!3m2!1spl!2spl!4v1234567890" 
+        width="100%" 
+        height="300" 
+        style="border:0; border-radius: 15px;" 
+        allowfullscreen="" 
+        loading="lazy">
+    </iframe>
+</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <div class="newsletter-text">
+                    <h3>Bądź Na Bieżąco!</h3>
+                    <p>Zapisz się do naszego newslettera i otrzymuj informacje o nowościach, promocjach i wydarzeniach rowerowych.</p>
+                </div>
+                <div class="newsletter-form">
+                    <form id="newsletterForm">
+                        <input type="email" id="newsletterEmail" placeholder="Twój adres email" required>
+                        <button type="submit" class="newsletter-btn">Zapisz Się</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>
+    <img src="images/logo/logo-white.png" alt="Nazwa Twojej Firmy" class="footer-logo" style="height: 45px; width: auto;">
+</h3>
+                    <p>Twój zaufany partner w świecie rowerów. Oferujemy najwyższej jakości rowery i akcesoria dla każdego rowerzysty.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">📘</a>
+                        <a href="#" class="social-link">📷</a>
+                        <a href="#" class="social-link">🐦</a>
+                        <a href="#" class="social-link">📺</a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Kategorie</h3>
+                    <ul>
+                        <li><a href="#" onclick="showCategory('mountain')">Rowery Górskie</a></li>
+                        <li><a href="#" onclick="showCategory('road')">Rowery Szosowe</a></li>
+                        <li><a href="#" onclick="showCategory('city')">Rowery Miejskie</a></li>
+                        <li><a href="#" onclick="showCategory('electric')">Rowery Elektryczne</a></li>
+                        <li><a href="#">Rowery Dziecięce</a></li>
+                        <li><a href="#">Akcesoria</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Obsługa Klienta</h3>
+                    <ul>
+                        <li><a href="#contact">Kontakt</a></li>
+                        <li><a href="#">Dostawa i Płatność</a></li>
+                        <li><a href="#">Zwroty i Reklamacje</a></li>
+                        <li><a href="#">Regulamin</a></li>
+                        <li><a href="#">Polityka Prywatności</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Informacje</h3>
+                    <ul>
+                        <li><a href="#about">O Nas</a></li>
+                        <li><a href="#">Kariera</a></li>
+                        <li><a href="#">Blog Rowerowy</a></li>
+                        <li><a href="#">Aktualności</a></li>
+                        <li><a href="#">Współpraca</a></li>
+                        <li><a href="#">Dla Firm</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Kontakt</h3>
+                    <div class="footer-contact">
+                        <p><span class="contact-icon">📍</span> ul. Płochocińska 199, 03-044 Warszawa</p>
+                        <p><span class="contact-icon">📞</span> +48 123 456 789</p>
+                        <p><span class="contact-icon">📧</span> info@rowerro.pl</p>
+                        <p><span class="contact-icon">🕒</span> Pon-Pt: 9:00-18:00, Sob: 10:00-16:00</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="container">
+                    <div class="footer-bottom-content">
+                        <p>&copy; 2024 Rowerro. Wszystkie prawa zastrzeżone.</p>
+                        <div class="footer-links">
+                            <a href="#">Regulamin</a>
+                            <a href="#">Polityka Prywatności</a>
+                            <a href="#">Cookies</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
